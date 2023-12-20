@@ -1,4 +1,13 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/iO5XMYt2)
+
+## Ce que j ai fait
+
+Dans ce projet, je montre qu'un clic sur une image peut être multisélectionné, 
+et qu'un appui long peut sélectionner l'image actuelle pour une prévisualisation en plein écran, 
+le partage de l'image actuelle, et la suppression de l'image actuelle. 
+J'ai également ajouté un bouton photo. 
+Toutes les fonctionnalités sont présentées dans la vidéo LOOKME !
+
 # Architecture Components and Retrofit
 
 Dans ce TP, vous allez apprendre à faire un appel API avec Retrofit et à afficher les données dans

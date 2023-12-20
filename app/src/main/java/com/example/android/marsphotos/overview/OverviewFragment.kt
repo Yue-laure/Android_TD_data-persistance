@@ -51,6 +51,8 @@ class OverviewFragment : Fragment() ,PhotoGridAdapter.OnItemClickListener{
     }
 
     private val REQUEST_CODE_CAMERA = 1001
+
+    private val selectedPhotos = mutableListOf<MarsPhoto>()
     /**
      * Inflates the layout with Data Binding, sets its lifecycle owner to the OverviewFragment
      * to enable Data Binding to observe LiveData, and sets up the RecyclerView with an adapter.
@@ -87,26 +89,6 @@ class OverviewFragment : Fragment() ,PhotoGridAdapter.OnItemClickListener{
             }
         }
     }
-// dialogue pour afficher des images de grande taille
-    override fun onItemClick(imageUrl: String) {
-        val dialog = Dialog(requireContext(), android.R.style.Theme_Black_NoTitleBar_Fullscreen)
-        dialog.setContentView(R.layout.dialog_big_photo)
-        val fullscreenImageView = dialog.findViewById<ImageView>(R.id.imageView)
-
-        Glide.with(requireContext())
-            .load(imageUrl)
-            .override(1000,1000)
-            .placeholder(R.drawable.loading_animation)
-            .error(R.drawable.ic_broken_image)
-            .into(fullscreenImageView)
-
-        fullscreenImageView.setOnClickListener {
-            dialog.dismiss()
-        }
-
-        dialog.show()
-    }
-
     override fun onDeleteClick(photo: MarsPhoto) {
         val selectedPhotos = adapter.getSelectedPhotos()
         viewModel.deletePhotos(selectedPhotos)
