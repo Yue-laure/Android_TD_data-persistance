@@ -15,7 +15,7 @@ enum class MarsApiStatus { LOADING, ERROR, DONE }
 /**
  * The [ViewModel] that is attached to the [OverviewFragment].
  */
-class OverviewViewModel : ViewModel() {
+class OverviewViewModel() : ViewModel() {
 
     private val repository = MarsRepository()
 
@@ -24,6 +24,8 @@ class OverviewViewModel : ViewModel() {
 
     private val _photos = MutableLiveData<List<MarsPhoto>>()
     val photos: LiveData<List<MarsPhoto>> = _photos
+
+
 
     /**
      * Call getMarsPhotos() on init so we can display status immediately.
@@ -51,4 +53,25 @@ class OverviewViewModel : ViewModel() {
             }
         }
     }
+
+//    delete photo selected
+fun deletePhotos(photos: List<MarsPhoto>) {
+    viewModelScope.launch(Dispatchers.IO) {
+        // Delete photos from the database ,mais pas reussir
+//        photos.forEach { photo ->
+//            repository.deletePhotos(photos)
+//        }
+
+        // Update LiveData after deletion
+        val currentPhotos = _photos.value.orEmpty().toMutableList()
+        val remainingPhotos = currentPhotos.toMutableList()
+
+        // Remove photos from LiveData based on their content (id)
+        remainingPhotos.removeAll { photo -> photos.any { it.id == photo.id } }
+
+        // Update LiveData with the remaining photos
+        _photos.postValue(remainingPhotos)
+    }
+}
+
 }

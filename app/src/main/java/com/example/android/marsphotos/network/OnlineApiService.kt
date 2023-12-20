@@ -12,4 +12,9 @@ class OnlineApiService : MarsApi {
             it.toMarsPhoto()
         }
     }
+
+    override suspend fun deletePhoto(photos: List<MarsPhoto>){
+        return service.getService().deletePhoto(photos)
+    }
+
 }

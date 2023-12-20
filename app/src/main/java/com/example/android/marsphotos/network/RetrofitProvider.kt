@@ -1,7 +1,6 @@
 package com.example.android.marsphotos.network
 
 import com.example.android.marsphotos.network.retrofit.MarsApiService
-import com.example.android.marsphotos.overview.MarsApiStatus
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
